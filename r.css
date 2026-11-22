@@ -37,3 +37,9 @@ h2{
     margin: 8px;
     cursor: pointer;
   }
+textarea{
+min-height:50px;
+max-height:80px;
+min-width:200px;
+max-width:300px;
+} 

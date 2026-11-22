@@ -1,0 +1,53 @@
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 45px;
+    font-weight:200%;
+    font-style: oblique;
+    text-transform: none;
+}
+h2{
+    text-transform: uppercase;
+}
+h1,h2{
+    text-align: center;
+}
+h3{
+    text-transform: capitalize;
+    text-align: right;
+}
+body{
+    margin:65px;
+    background-color: #f8f8f8;
+    /*background-color: #d6d9df;*/
+    /*background-color: #ffffff;*/
+}
+.imgen{
+    width: 200px;
+    height: 150px;
+}
+a{
+    color:#98149c;
+    /*background-color: #ffffff;*/
+}
+.menu{
+    text-align: center;
+    /*border: 3px solid #507387;*/
+}
+p{
+    font-size:17px ;
+    text-align: justify;
+    word-spacing: 17%;
+    letter-spacing: 8%;
+    text-transform: none;
+}
+ul, li{
+    font-size:17px ;
+    text-align: justify;
+    word-spacing: 17%;
+    letter-spacing: 8%;
+    text-transform: none; 
+}
+.jua{
+    width: 330px;
+    height: 300px;
+}

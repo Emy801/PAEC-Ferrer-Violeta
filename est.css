@@ -1,0 +1,103 @@
+h1{
+    font-size: 45px;
+    font-weight:200%;
+    font-style: oblique;
+    text-transform: uppercase;
+    color: #07300c;
+}
+h2,h3{
+    text-transform: capitalize;
+}
+h1,h2,h3{
+    text-align: left;
+}
+h1,h3,h2,p{
+    font-family:'Times New Roman', Times, serif;
+}
+p,em{
+    text-transform: none;
+}
+a{
+    text-transform: capitalize;
+}
+p,em,a{
+    font-size:16px ;
+    text-align: justify;
+    word-spacing: 17%;
+    letter-spacing: 8%;
+}
+body{
+    /*margin:68px;*/
+    margin-left: 68px;
+    margin-right: 68px;
+    background-image: url('ambiente.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+}
+a{
+    color:#5d1f70;
+    text-align: center;
+}
+.papel, .plastico, .metal, .vidro, .organico{
+    width: 200px;
+    height: 150px;
+}
+.senor{
+    width: 150px;
+    height: 150px;
+}
+.sor{
+    width: 230px;
+    height: 150px;
+}
+.tipo{
+    width: 280px;
+    height: 150px;
+}
+.rene ,.esquina{
+    width: 290px;
+    height: 210px;
+}
+.terrenoconbasura{
+    width: 170px;
+    height: 200px;
+}
+.callecomunitario{
+    width: 250px;
+    height: 200px;
+}
+li ,ol{
+    font-size: 19px;
+    text-align: justify;
+    word-spacing: 19%;
+    letter-spacing: 10%;
+    text-transform: none;
+}
+.nose{
+    width: 30px;
+    height: 20px;
+}
+.rrr{
+    width: 370px;
+    height: 200px;
+}
+.ta {
+    text-align: justify;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.650)), url("imagen.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #000000;
+    padding:24px;
+    border-radius: 8px;
+}
+.problem{
+    width: 370px;
+    height: 200px; 
+}
+.pala{
+    width: 230px;
+    height: 120px;
+}

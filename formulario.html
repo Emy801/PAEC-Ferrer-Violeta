@@ -5,6 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi compromiso con el reciclaje - Formulario</title>
     <link rel="stylesheet" href="r.css">
+    <style>
+        .juego-reciclaje {
+            max-width: 560px;
+            margin: 24px auto;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f4fbf6;
+            border: 1px solid #c6e6d0;
+            text-align: center;
+        }
+        .juego-opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 14px 0;
+        }
+        .juego-opciones button {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #2e7d32;
+            background: #ffffff;
+            color: #1b5e20;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .juego-opciones button:hover:not(:disabled) {
+            background: #e8f5e9;
+        }
+        .juego-opciones button:disabled {
+            opacity: 0.65;
+            cursor: default;
+        }
+        .juego-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+        .btn-reiniciar {
+            margin-top: 12px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            background: #2e7d32;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
       <section class="form-container">
@@ -13,7 +62,7 @@
         <form action="https://formsubmit.co/lilithtere@gmail.com" method="POST">
                 
           <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://emy801.github.io/PAEC-Ferrer-Viol|eta/gracias.html">
+          <input type="hidden" name="_next" value="https://emy801.github.io/PAEC-Ferrer-Violeta/gracias.html">
           <input type="hidden" name="_subject" value="¡Nuevo compromiso Eco-Venado recibido!">
 
           <label for="nombre">1. Nombre:</label>
@@ -52,45 +101,156 @@
       </section>
     
     <div class="cente">
-    <a href="el_resiclaje_en_nuestara_comunidad.html"> ← Anterior  </a>   <a href="referencias_APA.html">Siguiente → </a>
+      <a href="el_resiclaje_en_nuestara_comunidad.html"> ← Anterior  </a>
+      <a href="referencias_APA.html">Siguiente → </a>
     </div>
     <a href="index.html">Página principal</a><br>
     
-      <div class="juego-reciclaje">
-        <h2>♻️ ¿Dónde va?</h2>
-        <h3 id="objeto">Botella de plástico 🧴</h3>
-        <button onclick="revisar('reciclable')">♻️ Reciclable</button>
-        <button onclick="revisar('organico')">🍎 Orgánico</button>
-        <p id="mensaje"></p>
-        <p>Puntos: <strong id="puntos">0</strong></p>
-      </div> 
-      <script>
-        const items = [
-          { nombre: "Botella de plástico 🧴", tipo: "reciclable" },
-          { nombre: "Cáscara de plátano 🍌", tipo: "organico" },
-          { nombre: "Caja de cartón 📦", tipo: "reciclable" },
-          { nombre: "Manzana mordida 🍎", tipo: "organico" },
-          { nombre: "Lata de refresco 🥫", tipo: "reciclable" },
-          { nombre: "bolsas de papel 🛍️", tipo: "reciclable" },
-          { nombre: "botellas de vidrio 🍾", tipo: "reciclable" }
-        ];
+    <div class="juego-reciclaje">
+      <h2>🦌 Reto Eco-Venado: Trivia de las 3R</h2>
+      <p id="progreso">Pregunta 1 de 5</p>
+      <h3 id="pregunta">Cargando pregunta...</h3>
+      <div class="juego-opciones" id="opciones"></div>
+      <p id="retroalimentacion"></p>
+      <div class="juego-stats">
+        <span>Puntos: <strong id="puntos">0</strong></span>
+        <span>Racha: <strong id="racha">0</strong> 🔥</span>
+      </div>
+      <button id="btn-reiniciar" class="btn-reiniciar" style="display: none;" onclick="reiniciarJuego()">
+        Jugar de nuevo
+      </button>
+    </div>
 
-        let actual = 0;
-        let puntos = 0;
-
-        function revisar(eleccion) {
-          if (eleccion === items[actual].tipo) {
-            puntos++;
-            document.getElementById("mensaje").innerText = "¡Correcto! ✅";
-          } else {
-            document.getElementById("mensaje").innerText = "¡Ups! Era " + items[actual].tipo + " ❌";
-          }
-
-          document.getElementById("puntos").innerText = puntos;
-          actual = (actual + 1) % items.length;
-          document.getElementById("objeto").innerText = items[actual].nombre;
+    <script>
+      const preguntas = [
+        {
+          texto: "¿Cuál de estas acciones corresponde a REDUCIR?",
+          opciones: [
+            "Llevar tu propio termo o botella reutilizable",
+            "Hacer una manualidad con cajas usadas",
+            "Separar botellas de PET limpias"
+          ],
+          correcta: 0,
+          explicacion: "Reducir significa generar menos residuos desde el inicio, como evitar botellas desechables."
+        },
+        {
+          texto: "¿Qué es lo ideal antes de llevar un envase de plástico o lata a reciclar?",
+          opciones: [
+            "Mezclarlo con restos de comida",
+            "Enjuagarlo y escurrirlo para evitar contaminación",
+            "Quemarlo para que ocupe menos espacio"
+          ],
+          correcta: 1,
+          explicacion: "Los residuos limpios y secos tienen mayor posibilidad de aprovecharse en el reciclaje."
+        },
+        {
+          texto: "Convertir un frasco de vidrio en un lapicero o maceta es un ejemplo de:",
+          opciones: [
+            "Residuo peligroso",
+            "Reutilizar",
+            "Compostaje"
+          ],
+          correcta: 1,
+          explicacion: "Reutilizar es darle un nuevo uso a un objeto antes de desecharlo."
+        },
+        {
+          texto: "¿Dónde deben depositarse pilas usadas o aparatos electrónicos?",
+          opciones: [
+            "En el bote de residuos orgánicos",
+            "En puntos de acopio o manejo especial",
+            "En el suelo de las áreas verdes"
+          ],
+          correcta: 1,
+          explicacion: "Contienen sustancias que pueden contaminar el suelo y el agua si no se manejan adecuadamente."
+        },
+        {
+          texto: "¿Por qué ayudan las áreas verdes y la reforestación en el plantel?",
+          opciones: [
+            "Aumentan la basura sólida",
+            "Mejoran el microclima, dan sombra y embellecen el entorno",
+            "Sustituyen la separación de residuos"
+          ],
+          correcta: 1,
+          explicacion: "Las áreas verdes fortalecen el entorno escolar y complementan el manejo de residuos."
         }
-      </script>
+      ];
+
+      let indice = 0;
+      let puntos = 0;
+      let racha = 0;
+      let bloqueado = false;
+
+      function cargarPregunta() {
+        bloqueado = false;
+        const actual = preguntas[indice];
+        document.getElementById("progreso").innerText = `Pregunta ${indice + 1} de ${preguntas.length}`;
+        document.getElementById("pregunta").innerText = actual.texto;
+        document.getElementById("retroalimentacion").innerText = "";
+
+        const contenedorOpciones = document.getElementById("opciones");
+        contenedorOpciones.innerHTML = "";
+
+        actual.opciones.forEach((opcion, i) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.innerText = opcion;
+          btn.onclick = () => responder(i);
+          contenedorOpciones.appendChild(btn);
+        });
+      }
+
+      function responder(seleccion) {
+        if (bloqueado) return;
+        bloqueado = true;
+
+        const actual = preguntas[indice];
+        const botones = document.querySelectorAll("#opciones button");
+        botones.forEach(b => (b.disabled = true));
+
+        if (seleccion === actual.correcta) {
+          puntos += 10;
+          racha += 1;
+          document.getElementById("retroalimentacion").innerText = `✅ ¡Muy bien! ${actual.explicacion}`;
+        } else {
+          racha = 0;
+          document.getElementById("retroalimentacion").innerText = `❌ No exactamente. ${actual.explicacion}`;
+        }
+
+        document.getElementById("puntos").innerText = puntos;
+        document.getElementById("racha").innerText = racha;
+
+        indice++;
+        setTimeout(() => {
+          if (indice < preguntas.length) {
+            cargarPregunta();
+          } else {
+            mostrarFinal();
+          }
+        }, 1800);
+      }
+
+      function mostrarFinal() {
+        document.getElementById("progreso").innerText = "¡Ronda completada!";
+        document.getElementById("pregunta").innerText = `Obtuviste ${puntos} de ${preguntas.length * 10} puntos.`;
+        document.getElementById("opciones").innerHTML = "";
+        document.getElementById("retroalimentacion").innerText =
+          puntos >= 40
+            ? "🌿 ¡Excelente compromiso Eco-Venado! Ya puedes enviar tu formulario arriba."
+            : "💚 ¡Buen intento! Puedes volver a intentarlo o dejar tu compromiso en el formulario.";
+        document.getElementById("btn-reiniciar").style.display = "inline-block";
+      }
+
+      function reiniciarJuego() {
+        indice = 0;
+        puntos = 0;
+        racha = 0;
+        document.getElementById("puntos").innerText = 0;
+        document.getElementById("racha").innerText = 0;
+        document.getElementById("btn-reiniciar").style.display = "none";
+        cargarPregunta();
+      }
+
+      cargarPregunta();
+    </script>
 </body>
 </html>
-
